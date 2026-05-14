@@ -20,7 +20,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
 console.log("Ben app.js'te tanımlanan bir ara katmanım");
@@ -28,8 +27,7 @@ next();
 })
 
 
-app.use('/api', require('./routes/index')); 
-
+app.use('/api', require('./routes/index')); //http://localhost:3000
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

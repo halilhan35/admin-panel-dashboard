@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
+const isAuthenticated = true;
 
-const isAuthenticated = false;
-router.all("*",(req,res,next) => {
-    if(isAuthenticated){
-        next();
-    }else{
-      res.json({success: false, error:"Not Authenticated"});  
-    }
-})
+router.all("*", (req, res, next) => {
+  if(isAuthenticated){
+    next();
+  } else {
+    res.json({ success: false, error: "Not Authenticated"});
+  } 
+});
 
 
-/* GET users listing. */
+/* GET users listening. */
 router.get('/', function(req, res, next) {
-  res.json({success: true});
+  res.json({ success: true });
 });
 
 module.exports = router;
