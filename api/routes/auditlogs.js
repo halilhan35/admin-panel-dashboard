@@ -1,7 +1,8 @@
 const express = require('express');
+const AuditLogs = require('../db/models/AuditLogs');
+const Response = require("../lib/Response");
+const moment = require("moment");
 const router = express.Router();
-const moment = require('moment');
-const AuditLogs = require("../db/models/AuditLogs");
 
 router.post("/",async (req, res) => {
    try {
@@ -36,9 +37,8 @@ router.post("/",async (req, res) => {
    } catch (err) {
       let errorResponse = Response.errorResponse(err);
       res.status(errorResponse.code).json(errorResponse);
-   } 
+   }  
    
-
 });
 
 module.exports = router;
